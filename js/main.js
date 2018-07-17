@@ -10,16 +10,25 @@ function(indexPage, editPage, colormap, util) {
 
   // Create a colormap for display. The following is an example.
   function createColormap(label, labels) {
-    return (label) ?
+    
+    var output =  (label) ?
       colormap.create("single", {
         size: labels.length,
         index: labels.indexOf(label)
       }) :
       [[255, 255, 255],
-       [226, 196, 196],
-       [64, 32, 32]].concat(colormap.create("hsv", {
-        size: labels.length - 3
+      [226, 196, 196],
+      [64, 32, 32]].concat(colormap.create("hsv", {
+        size: labels.length - 2
       }));
+    var t = [[255, 255, 255],
+    [226, 196, 196],
+    [64, 32, 32]].concat(colormap.create("hsv", {
+      size: labels.length - 2
+    }));
+
+    document.getElementById("demo").innerHTML=t;
+    return output;
   }
 
   // Load dataset before rendering a view.
